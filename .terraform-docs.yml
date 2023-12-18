@@ -1,0 +1,8 @@
+---
+# .terraform-docs.yml
+formatter: markdown table
+header-from: main.tf
+settings:
+  hide-empty: true
+sort:
+  enabled: true
