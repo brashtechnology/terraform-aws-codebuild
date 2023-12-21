@@ -34,7 +34,7 @@ Otherwise the buildspec supplied without args is just passed through a file func
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3.69 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.31.0 |
 
 ## Resources
 
@@ -47,18 +47,18 @@ Otherwise the buildspec supplied without args is just passed through a file func
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_build_timeout"></a> [build\_timeout](#input\_build\_timeout) | the timeout of the build, expressed in seconds | `number` | `5` | no |
-| <a name="input_cloudwatch_log_group"></a> [cloudwatch\_log\_group](#input\_cloudwatch\_log\_group) | n/a | `string` | n/a | yes |
-| <a name="input_cloudwatch_stream_name"></a> [cloudwatch\_stream\_name](#input\_cloudwatch\_stream\_name) | n/a | `string` | n/a | yes |
+| <a name="input_cloudwatch_log_group"></a> [cloudwatch\_log\_group](#input\_cloudwatch\_log\_group) | The log group | `string` | n/a | yes |
+| <a name="input_cloudwatch_stream_name"></a> [cloudwatch\_stream\_name](#input\_cloudwatch\_stream\_name) | the specific stream within the log group | `string` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | the description of the codebuild project | `string` | n/a | yes |
 | <a name="input_environment_compute_type"></a> [environment\_compute\_type](#input\_environment\_compute\_type) | Information about the compute resources the build project will use. | `string` | n/a | yes |
 | <a name="input_environment_image"></a> [environment\_image](#input\_environment\_image) | Docker image to use for this build project. Valid values are from AWS (https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html), Docker Hub (https://hub.docker.com/) or AWS ECR fully qualifed | `string` | n/a | yes |
+| <a name="input_environment_image_pull_credentials_type"></a> [environment\_image\_pull\_credentials\_type](#input\_environment\_image\_pull\_credentials\_type) | Type of credentials AWS CodeBuild uses to pull images in your build. Valid values: CODEBUILD, SERVICE\_ROLE | `string` | n/a | yes |
 | <a name="input_environment_type"></a> [environment\_type](#input\_environment\_type) | Type of build environment to use for related builds. For additional information, see the CodeBuild User Guide (https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html) | `string` | n/a | yes |
-| <a name="input_image_pull_credentials_type"></a> [image\_pull\_credentials\_type](#input\_image\_pull\_credentials\_type) | Type of credentials AWS CodeBuild uses to pull images in your build. Valid values: CODEBUILD, SERVICE\_ROLE | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | the name of the codebuild project | `string` | n/a | yes |
 | <a name="input_privileged_mode"></a> [privileged\_mode](#input\_privileged\_mode) | Whether to enable running the Docker daemon inside a Docker container. Defaults to true. | `bool` | `true` | no |
 | <a name="input_service_role"></a> [service\_role](#input\_service\_role) | the ARN of the IAM service role used by the codebuild project | `string` | n/a | yes |
-| <a name="input_source_buildspec"></a> [source\_buildspec](#input\_source\_buildspec) | n/a | `string` | n/a | yes |
-| <a name="input_source_buildspec_args"></a> [source\_buildspec\_args](#input\_source\_buildspec\_args) | n/a | `map(string)` | `{}` | no |
+| <a name="input_source_buildspec"></a> [source\_buildspec](#input\_source\_buildspec) | The build spec file. To have it pre-processed be sure to include source\_buildspec\_args | `string` | n/a | yes |
+| <a name="input_source_buildspec_args"></a> [source\_buildspec\_args](#input\_source\_buildspec\_args) | When supplied will cause the source\_buildspec to be procssed via the templatefile function, where this variable will serve as the second argument | `map(string)` | `{}` | no |
 
 ## Outputs
 

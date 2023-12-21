@@ -37,18 +37,20 @@ variable "environment_image" {
 variable "environment_type" {
   description = "Type of build environment to use for related builds. For additional information, see the CodeBuild User Guide (https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)"
   type        = string
+
   validation {
     condition     = contains(["LINUX_CONTAINER", "LINUX_GPU_CONTAINER", "WINDOWS_CONTAINER", "WINDOWS_SERVER_2019_CONTAINER", "ARM_CONTAINER"], var.environment_type)
     error_message = "Valid values for environment_type: (LINUX_CONTAINER, LINUX_GPU_CONTAINER, WINDOWS_CONTAINER, WINDOWS_SERVER_2019_CONTAINER, ARM_CONTAINER)."
   }
 }
 
-variable "image_pull_credentials_type" {
+variable "environment_image_pull_credentials_type" {
   description = "Type of credentials AWS CodeBuild uses to pull images in your build. Valid values: CODEBUILD, SERVICE_ROLE"
   type        = string
+
   validation {
-    condition     = contains(["CODEBUILD", "SERVICE_ROLE"], var.image_pull_credentials_type)
-    error_message = "Valid values for image_pull_credentials_type: (CODEBUILD, SERVICE_ROLE)."
+    condition     = contains(["CODEBUILD", "SERVICE_ROLE"], var.environment_image_pull_credentials_type)
+    error_message = "Valid values for environment_image_pull_credentials_type: (CODEBUILD, SERVICE_ROLE)."
   }
 }
 
@@ -59,21 +61,22 @@ variable "privileged_mode" {
 }
 
 variable "cloudwatch_log_group" {
+  description = "The log group"
   type     = string
-  nullable = false
 }
 
 variable "cloudwatch_stream_name" {
+  description = "the specific stream within the log group"
   type     = string
-  nullable = false
 }
 
 variable "source_buildspec" {
+  description = "The build spec file. To have it pre-processed be sure to include source_buildspec_args"
   type     = string
-  nullable = false
 }
 
 variable "source_buildspec_args" {
+  description = "When supplied will cause the source_buildspec to be procssed via the templatefile function, where this variable will serve as the second argument"
   type    = map(string)
   default = {}
 }
