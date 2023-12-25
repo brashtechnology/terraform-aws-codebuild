@@ -23,4 +23,3 @@
   *
   * Otherwise the buildspec supplied without args is just passed through a file function and assigned to the buildspec source block
   */
-  

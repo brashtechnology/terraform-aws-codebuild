@@ -62,21 +62,21 @@ variable "privileged_mode" {
 
 variable "cloudwatch_log_group" {
   description = "The log group"
-  type     = string
+  type        = string
 }
 
 variable "cloudwatch_stream_name" {
   description = "the specific stream within the log group"
-  type     = string
+  type        = string
 }
 
 variable "source_buildspec" {
   description = "The build spec file. To have it pre-processed be sure to include source_buildspec_args"
-  type     = string
+  type        = string
 }
 
 variable "source_buildspec_args" {
   description = "When supplied will cause the source_buildspec to be procssed via the templatefile function, where this variable will serve as the second argument"
-  type    = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
 }
